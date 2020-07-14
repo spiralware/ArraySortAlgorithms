@@ -19,11 +19,22 @@ def insertion_sort_immediate_change(array):
 
 #быстрая сортировка
 def partition(array, l, r):
-    x = array[r]  #в качестве опорного выбираем самый правый элемент
+    pivot_value = array[r]  #в качестве опорного выбираем самый правый элемент
+    new_pivot_pos = l
     for i in range(l, r):
-        if array[i] < x:
-            pass
+        if array[i] < pivot_value:
+            array[new_pivot_pos], array[i] = array[i], array[new_pivot_pos]
+            new_pivot_pos = new_pivot_pos + 1
+    array[new_pivot_pos], array[r] = array[r], array[new_pivot_pos]
+    return new_pivot_pos
 
+def quick_sort_impl(array, l, r):
+    if l >= r:
+        return
+
+    q = partition(array, l, r)
+    quick_sort_impl(array, l, q - 1)
+    quick_sort_impl(array, q + 1, r)
 
 def quick_sort(array):
-    pass
+    quick_sort_impl(array, 0, len(array) - 1)

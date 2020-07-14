@@ -1,5 +1,6 @@
 from array_sort_algos import bubble_sort
 from array_sort_algos import insertion_sort_immediate_change
+from array_sort_algos import quick_sort
 
 def check_algo(func):
     input_file = open('input.txt')
@@ -33,6 +34,7 @@ def check_algo(func):
 def main():
     check_algo(bubble_sort)
     check_algo(insertion_sort_immediate_change)
+    check_algo(quick_sort)
     
 
 if __name__ == "__main__":
