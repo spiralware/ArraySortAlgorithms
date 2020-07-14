@@ -10,12 +10,27 @@ def bubble_sort(array):
 
 #сортировка вставками, которая сразу меняет местами
 #соседние элементы, если следующий элемент меньше предыдущего
-def insertion_sort_immediate_change(array):
+def insertion_sort(array):
     for i in range(1, len(array)):
         j = i
         while j >= 1 and array[j] < array[j - 1]:
             array[j - 1], array[j] = array[j], array[j - 1]
             j = j - 1
+
+#сортировка выбором
+def find_min_index(array, l, r):
+    min_el_index = l
+    min_el = array[min_el_index]
+    for i in range (l, r):
+        if array[i] < min_el:
+            min_el_index = i
+            min_el = array[min_el_index]
+    return min_el_index
+
+def selection_sort(array):
+    for i in range(0, len(array)):
+        j = find_min_index(array, i, len(array))
+        array[i], array[j] = array[j], array[i]
 
 #быстрая сортировка
 def partition(array, l, r):
